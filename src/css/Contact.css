@@ -1,0 +1,48 @@
+#Contact {
+    scroll-snap-align: start;
+    position: relative;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+}
+
+#Contact .SectionTitle {
+    z-index: 1;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#Contact #mapDiv {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(.2);
+}
+
+#Contact #mapDiv .name {
+    line-height: 100%;
+    text-wrap: nowrap;
+    backdrop-filter: blur(.5rem);
+}
+
+#Contact table {
+    margin: 2rem auto;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+#Contact table td {
+    padding: 0;
+    height: 2rem;
+}
+
+#Contact table td:first-child {
+    width: 2rem;
+}
+
+#Contact a {
+    text-decoration: none;
+}

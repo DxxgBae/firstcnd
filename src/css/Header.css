@@ -1,0 +1,128 @@
+#Header {
+    z-index: 99;
+    position: fixed;
+    width: 100%;
+    height: 4rem;
+    transition: var(--ms);
+}
+
+#Header:is(:hover, :has(.tab>.active)) {
+    background-color: white;
+}
+
+#Header.invert:not(:hover, :has(.tab>.active)) * {
+    color: white;
+}
+
+#Header a {
+    text-decoration: none;
+}
+
+#Header .home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 1rem;
+    width: fit-content;
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#Header .home img {
+    height: 2.5rem;
+    transition: var(--ms);
+}
+
+#Header.invert .home img {
+    filter: invert(1);
+}
+
+#Header.invert:is(:hover, :has(.tab>.active)) .home img {
+    filter: none;
+}
+
+#Header .home h4 {
+    background: linear-gradient(150deg, black, var(--color-black));
+    -webkit-background-clip: text;
+    transition: var(--ms);
+    color: transparent;
+}
+
+#Header .menu .item {
+    list-style-type: none;
+}
+
+#Header .menu {
+    margin: 0 auto;
+    padding: 0;
+    width: fit-content;
+    display: flex;
+}
+
+#Header .menu a {
+    padding: 0 1rem;
+    line-height: 4rem;
+    display: block;
+    font-weight: 600;
+    transition: var(--ms);
+    transform: scale(1);
+}
+
+#Header .menu a:hover {
+    color: var(--color-main);
+    transform: scale(1.1);
+}
+
+#Header .tab {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#Header .tab i {
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--ms);
+    transform: scale(1);
+}
+
+#Header .tab i:hover {
+    color: var(--color-main);
+    transform: scale(1.1) rotate(180deg);
+}
+
+#Header .tab .menu {
+    position: absolute;
+    top: 4rem;
+    width: 100dvw;
+    flex-direction: column;
+    background-color: white;
+    overflow: hidden;
+    transition: var(--ms);
+    height: 0;
+}
+
+#Header .tab .menu.active {
+    height: 16rem;
+}
+
+#Header .tab .menu a {
+    width: 100%;
+}
+
+/* Vertical */
+@media (orientation: portrait) {
+    #Header *:not(.tab)>.menu {
+        display: none;
+    }
+}

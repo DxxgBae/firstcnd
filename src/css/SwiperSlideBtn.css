@@ -1,0 +1,38 @@
+.slideBtn {
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    width: 4rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--ms);
+    color: white;
+}
+
+.slideBtn:hover {
+    color: var(--color-main);
+}
+
+.slideBtn.prev {
+    left: 0;
+}
+
+.slideBtn.next {
+    right: 0;
+}
+
+.slideBtn.disabled {
+    color: transparent
+}
+
+.swiper-pagination-bullet {
+    background-color: white !important;
+    opacity: 1 !important;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: var(--color-main) !important;
+}

@@ -1,38 +1,100 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+:root {
+    --color-black: rgb(50, 50, 50);
+    --color-gray: gray;
+    --color-main: CornflowerBlue;
+    --ms: 500ms;
+}
+
+* {
+    scrollbar-width: none;
+    box-sizing: border-box;
+    color: var(--color-black);
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 .App {
-  text-align: center;
+    width: 100dvw;
+    height: 100dvh;
+    overflow: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small {
+    margin: 0;
+    line-height: 150%;
+    word-break: keep-all;
+    text-wrap: balance;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+    font-size: 4rem;
+    font-weight: 900;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h2 {
+    font-size: 3rem;
+    font-weight: 900;
 }
 
-.App-link {
-  color: #61dafb;
+h3 {
+    font-size: 2rem;
+    font-weight: 900;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h4 {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+h5 {
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+h6 {
+    font-size: .75rem;
+    font-weight: 900;
+}
+
+.animation {
+    transition: calc(var(--ms) * 2);
+}
+
+.animation.fadeIn {
+    opacity: 1;
+}
+
+.animation.fadeOut {
+    opacity: 0;
+}
+
+.animation.dropIn {
+    transform: translateY(0);
+}
+
+.animation.dropOut {
+    transform: translateY(-2rem);
+}
+
+.Noise {
+    user-select: none;
+    pointer-events: none;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url('./img/noise.png');
+    mix-blend-mode: multiply;
+    opacity: 0.15;
 }
