@@ -30,6 +30,10 @@
     max-width: 64rem;
 }
 
+#Article .item:last-child {
+    margin-bottom: 50%;
+}
+
 #Article .item .text {
     overflow: hidden;
     transition: var(--ms);
