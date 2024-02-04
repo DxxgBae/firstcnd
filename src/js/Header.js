@@ -48,8 +48,8 @@ function Header() {
                     {Menu}
                 </ul>
                 <div className='tab' onClick={() => setToggleTab(!toggleTab)}>
-                    <i className={toggleTab ? 'fa-solid fa-xmark fa-xl' : 'fa-solid fa-ellipsis-vertical fa-xl'} />
-                    <ul className={toggleTab ? 'menu active' : 'menu'}>
+                    <i className={`fa-solid ${toggleTab ? 'fa-xmark' : 'fa-ellipsis-vertical'} fa-xl`} />
+                    <ul className={`menu${toggleTab ? ' active' : ''}`}>
                         {Menu}
                     </ul>
                 </div>

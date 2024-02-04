@@ -21,11 +21,11 @@ function SwiperSlideBtn() {
     return (
         <>
             <i
-                className={`fa-solid fa-angle-left fa-2xl slideBtn prev ${isBeginning ? 'disabled' : undefined}`}
+                className={`fa-solid fa-angle-left fa-2xl slideBtn prev${isBeginning ? ' disabled' : ''}`}
                 onClick={() => swiper.slidePrev()}
             />
             <i
-                className={`fa-solid fa-angle-right fa-2xl slideBtn next ${isEnd ? 'disabled' : undefined}`}
+                className={`fa-solid fa-angle-right fa-2xl slideBtn next${isEnd ? ' disabled' : ''}`}
                 onClick={() => swiper.slideNext()}
             />
         </>

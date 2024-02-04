@@ -98,7 +98,11 @@
 
 #Header .tab i:hover {
     color: var(--color-main);
-    transform: scale(1.1) rotate(180deg);
+    transform: scale(1.2);
+}
+
+#Header .tab:has(.active) i:hover {
+    transform: scale(1.2) rotate(180deg);
 }
 
 #Header .tab .menu {

@@ -28,7 +28,7 @@ function Project() {
                 slidesPerView={isPortrait}
                 speed={500}
             >
-                {dataProject.project.slice().reverse().map((item, index) => (
+                {dataProject.slice().reverse().map((item, index) => (
                     <SwiperSlide key={index} className='item'>
                         <div className='img' style={{ backgroundImage: `url(${require(`../img/project-${item.index}-0.jpg`)})` }} />
                         <h5 className='animation fadeOut'>{item.name}</h5>
