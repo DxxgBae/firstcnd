@@ -7,25 +7,24 @@ function Header() {
     const [headerInvert, setHeaderInvert] = useState(false);
 
     useEffect(() => {
-        const appElement = document.getElementsByClassName('App')[0];
+        const app = document.getElementsByClassName('App')[0];
 
-        const handleScroll = () => {
-            var invertElements = document.getElementsByClassName('invert');
-
+        const handleScroll = (e) => {
             var bool = false;
-            for (var j of invertElements) {
-                if (j.nodeName === 'HEADER') continue;
-                var top = j.getBoundingClientRect().y;
-                var bottom = top + j.getBoundingClientRect().height;
+            var invertElements = document.getElementsByClassName('invert');
+            for (var i of invertElements) {
+                if (i.nodeName === 'HEADER') continue;
+                var top = i.getBoundingClientRect().y;
+                var bottom = top + i.getBoundingClientRect().height;
                 if (top <= 0 && bottom > 0) bool = true;
             }
             setHeaderInvert(bool);
         };
 
-        appElement.addEventListener('scroll', handleScroll);
+        app.addEventListener('scroll', handleScroll);
         handleScroll();
 
-        return () => appElement.removeEventListener('scroll', handleScroll);
+        return () => app.removeEventListener('scroll', handleScroll);
     }, []);
 
     const Menu = (

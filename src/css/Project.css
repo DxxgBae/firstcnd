@@ -52,13 +52,17 @@
     transition: var(--ms);
 }
 
-#Project .item.active .text:hover {
-    backdrop-filter: blur(.2rem) invert(.2) brightness(.8);
+/* Horizontal */
+@media (orientation: landscape) {
+    #Project .item.active .text:hover {
+        backdrop-filter: blur(.2rem) invert(.2);
+    }
 }
 
 /* Vertical */
 @media (orientation: portrait) {
     #Project .item.active .text {
         padding: 2rem 1rem;
+        backdrop-filter: blur(.2rem) invert(.2);
     }
 }
