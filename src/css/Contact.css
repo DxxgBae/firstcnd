@@ -22,10 +22,13 @@
 }
 
 #Contact #mapDiv .name {
-    pointer-events: none;
     line-height: 100%;
     text-wrap: nowrap;
     backdrop-filter: blur(.5rem);
+}
+
+#Contact #mapDiv *:has(>*>.name) {
+    pointer-events: none !important;
 }
 
 #Contact table {
