@@ -31,7 +31,7 @@
 }
 
 #Article .item:last-child {
-    margin-bottom: 50%;
+    margin-bottom: calc(100dvh / 3);
 }
 
 #Article .item .text {

@@ -32,7 +32,7 @@ function Main() {
             >
                 <SwiperSlide>
                     <video autoPlay loop muted playsInline>
-                        <source src={require(`../img/main-0.mp4`)} type="video/mp4" />
+                        <source src='https://vod-progressive.akamaized.net/exp=1707106475~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F1453%2F6%2F157269912%2F489780566.mp4~hmac=eb1cc89a9f7f92145edafa743169f86af2fcff975873ee05893a2c9240a7a5b9/vimeo-prod-skyfire-std-us/01/1453/6/157269912/489780566.mp4?filename=file.mp4' type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </SwiperSlide>
