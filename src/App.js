@@ -1,6 +1,7 @@
 import Header from './js/Header'
 import Main from './js/Main'
 import Company from './js/Company'
+import History from './js/History'
 import Project from './js/Project'
 import Article from './js/Article'
 import Contact from './js/Contact'
@@ -31,6 +32,7 @@ function App() {
             <Header />
             <Main />
             <Company />
+            <History />
             <Project />
             <Article />
             <Contact />

@@ -113,11 +113,6 @@
     background-color: white;
     overflow: hidden;
     transition: var(--ms);
-    height: 0;
-}
-
-#Header .tab .menu.active {
-    height: 16rem;
 }
 
 #Header .tab .menu a {

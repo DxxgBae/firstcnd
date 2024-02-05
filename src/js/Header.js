@@ -31,6 +31,7 @@ function Header() {
     const Menu = (
         <>
             <li className='item'><a href='#Company'>회사소개</a></li>
+            <li className='item'><a href='#History'>회사연혁</a></li>
             <li className='item'><a href='#Project'>프로젝트</a></li>
             <li className='item'><a href='#Article'>보도자료</a></li>
             <li className='item'><a href='#Contact'>오시는길</a></li>
@@ -49,7 +50,10 @@ function Header() {
                 </ul>
                 <div className='tab' onClick={() => setToggleTab(!toggleTab)}>
                     <i className={`fa-solid ${toggleTab ? 'fa-xmark' : 'fa-ellipsis-vertical'} fa-xl`} />
-                    <ul className={`menu${toggleTab ? ' active' : ''}`}>
+                    <ul
+                        className={`menu${toggleTab ? ' active' : ''}`}
+                        style={{ height: `${toggleTab ? `${Menu.props.children.length * 4}rem` : 0}` }}
+                    >
                         {Menu}
                     </ul>
                 </div>
