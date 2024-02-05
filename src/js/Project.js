@@ -23,6 +23,7 @@ function Project() {
 
     return (
         <section id='Project' className='invert'>
+            <div className='Noise' />
             <Swiper
                 spaceBetween={0}
                 slidesPerView={isPortrait}

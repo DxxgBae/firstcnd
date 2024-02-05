@@ -1,7 +1,12 @@
+import '../css/Footer.css'
+
 function Footer() {
     return (
         <footer id='Footer'>
-            Footer
+            <div className='Noise' />
+            <small>
+                ©DxxgBae
+            </small>
         </footer>
     );
 }

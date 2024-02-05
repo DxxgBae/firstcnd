@@ -39,6 +39,7 @@ function Contact() {
 
     return (
         <section id='Contact'>
+            <div className='Noise' />
             <SectionTitle h='오시는길' p={['퍼스트씨엔디로 오시는 길을 안내드립니다.']} />
             <div ref={mapElement} id='mapDiv' />
             <table className='animation fadeOut dropOut'>

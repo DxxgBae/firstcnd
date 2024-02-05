@@ -22,6 +22,7 @@ function Article() {
 
     return (
         <section id='Article'>
+            <div className='Noise' />
             <SectionTitle h='보도자료' p={['퍼스트씨엔디의 소식을 전해드립니다.']} />
             <div className='container'>
                 {dataArticle.slice().reverse().map((item, index) => (

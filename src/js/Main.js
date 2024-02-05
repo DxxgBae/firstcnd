@@ -7,6 +7,7 @@ import '../css/Main.css';
 function Main() {
     return (
         <section id='Main' className='invert'>
+            <div className='Noise' />
             <div className='text animation fadeOut'>
                 <p className='animation fadeOut dropOut'>
                     First is Best! Best is First!

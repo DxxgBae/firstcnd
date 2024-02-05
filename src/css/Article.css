@@ -8,6 +8,7 @@
 }
 
 #Article .container {
+    margin-bottom: 2rem;
     width: 100%;
     height: 100%;
     overflow: scroll;
@@ -81,7 +82,7 @@
     }
 
     #Article .item:hover .text {
-        padding: 0 1rem;
+        padding: 0 2rem;
     }
 
     #Article .item .more {

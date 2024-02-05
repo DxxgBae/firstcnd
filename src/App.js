@@ -28,7 +28,6 @@ function App() {
 
     return (
         <div className="App">
-            <div className='Noise' />
             <Header />
             <Main />
             <Company />
