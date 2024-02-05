@@ -8,6 +8,7 @@
 }
 
 #Project .item {
+    cursor: pointer;
     position: relative;
     width: 100%;
     height: 100dvh;
@@ -16,9 +17,17 @@
     justify-content: center;
 }
 
-#Project .item .img {
+#Project .item .background {
+    pointer-events: none;
     z-index: -1;
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#Project .item .img {
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -27,19 +36,29 @@
     filter: grayscale(.5) brightness(.5);
 }
 
-#Project .item:hover .img {
+#Project .item:hover .img,
+#Project .item.active .img {
     filter: none;
 }
 
-#Project {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+#Project .item .text * {
+    color: white;
 }
 
-#Project h5 {
-    color: white;
+#Project .item.active .text {
+    padding: 2rem;
+    width: calc(100% - 8rem);
+    border: 1px solid rgba(255, 255, 255, .5);
+    transition: var(--ms);
+}
+
+#Project .item.active .text:hover {
+    backdrop-filter: blur(.2rem) invert(.2) brightness(.8);
+}
+
+/* Vertical */
+@media (orientation: portrait) {
+    #Project .item.active .text {
+        padding: 2rem 1rem;
+    }
 }
