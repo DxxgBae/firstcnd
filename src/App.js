@@ -18,7 +18,6 @@ function App() {
             app.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
             scrollTimer = setTimeout(() => scrollTimer = null, 500);
         };
-
         const scrollDn = () => {
             app.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
             scrollTimer = setTimeout(() => scrollTimer = null, 500);
@@ -29,12 +28,18 @@ function App() {
             e.deltaY < 0 ? scrollUp() : scrollDn();
         };
 
-        let startY;
-        const touchstart = (e) => startY = e.touches[0].clientY;
+        let startX, startY;
+        const touchstart = (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }
         const touchend = (e) => {
             if (scrollTimer || !startY) return startY = null;
-            if (startY - e.changedTouches[0].clientY < 0) scrollUp();
-            else if (startY - e.changedTouches[0].clientY > 0) scrollDn();
+            let deltaX = startX - e.changedTouches[0].clientX;
+            let deltaY = startY - e.changedTouches[0].clientY;
+            if (Math.abs(deltaX) > Math.abs(deltaY)) return startY = null;
+            deltaY < 0 ? scrollUp() : scrollDn();
+            startX = null;
             startY = null;
         };
 

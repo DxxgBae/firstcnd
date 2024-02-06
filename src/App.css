@@ -23,6 +23,7 @@
     width: 100dvw;
     height: 100dvh;
     overflow: hidden;
+    touch-action: none;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     text-align: center;
