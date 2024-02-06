@@ -43,13 +43,6 @@
     filter: none;
 }
 
-#Header .home h4 {
-    background: linear-gradient(150deg, black, var(--color-black));
-    -webkit-background-clip: text;
-    transition: var(--ms);
-    color: transparent;
-}
-
 #Header .menu .item {
     list-style-type: none;
 }
