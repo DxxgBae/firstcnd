@@ -14,18 +14,44 @@ function App() {
         const app = document.querySelector('.App');
         let scrollTimer;
 
-        const scroll = (bool) => {
-            //bool: true = up, false = dn
-            if (scrollTimer) return;
+        const scrollUp = () => {
             app.scrollBy({
-                top: bool ? -window.innerHeight : window.innerHeight,
+                top: -window.innerHeight,
                 behavior: 'smooth'
             });
             scrollTimer = setTimeout(() => scrollTimer = null, 500);
-        }
+        };
 
-        window.addEventListener('wheel', (e) => scroll(e.deltaY < 0 ? true : false));
-        return () => window.removeEventListener('wheel', (e) => scroll(e.deltaY < 0 ? true : false));
+        const scrollDn = () => {
+            app.scrollBy({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+            scrollTimer = setTimeout(() => scrollTimer = null, 500);
+        };
+
+        const wheel = (e) => {
+            if (scrollTimer) return;
+            e.deltaY < 0 ? scrollUp() : scrollDn();
+        };
+
+        let startY;
+        const touchstart = (e) => startY = e.touches[0].clientY;
+        const touchend = (e) => {
+            if (scrollTimer || !startY) return startY = null;
+            if (startY - e.changedTouches[0].clientY < 0) scrollUp();
+            else if (startY - e.changedTouches[0].clientY > 0) scrollDn();
+            startY = null;
+        };
+
+        window.addEventListener('wheel', wheel);
+        window.addEventListener('touchstart', touchstart);
+        window.addEventListener('touchend', touchend);
+        return () => {
+            window.removeEventListener('wheel', wheel);
+            window.removeEventListener('touchstart', touchstart);
+            window.removeEventListener('touchend', touchend);
+        };
     }, []);
 
     const observer = new IntersectionObserver((e) => {
