@@ -20,13 +20,10 @@
 }
 
 .App {
-    width: 100dvw;
-    height: 100dvh;
-    overflow: hidden;
-    touch-action: none;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    position: relative;
+    height: 100%;
     text-align: center;
+    transition: calc(var(--ms) * 2);
 }
 
 h1,
@@ -71,26 +68,6 @@ h5 {
 h6 {
     font-size: .75rem;
     font-weight: 900;
-}
-
-.animation {
-    transition: calc(var(--ms) * 2);
-}
-
-.animation.fadeIn {
-    opacity: 1;
-}
-
-.animation.fadeOut {
-    opacity: 0;
-}
-
-.animation.dropIn {
-    transform: translateY(0);
-}
-
-.animation.dropOut {
-    transform: translateY(-2rem);
 }
 
 .Noise {

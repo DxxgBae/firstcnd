@@ -1,0 +1,30 @@
+import '../css/Company.css';
+
+function Company() {
+    const service = [
+        { h: '부동산개발', p: '기업 보유 부동산, 대형판매시설, 구도심 토지 등 매입을 통한 부동산 복합개발', img: 'https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+        { h: '부동산 컨설팅 및 PM', p: '사업기획 및 MD전략 수립', img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+        { h: '부동산 유동화', p: '기업 보유 부동산 및 대형판매시설 등 유동화 매각 자문', img: 'https://images.unsplash.com/photo-1560221328-12fe60f83ab8?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }
+    ];
+
+    return (
+        <section id='Company' className='invert'>
+            <div className='Noise' />
+            {service.map((item, index) => (
+                <div key={index} className='item'>
+                    <div className='text animation fadeOut dropOut'>
+                        <h4>
+                            {item.h}
+                        </h4>
+                        <p>
+                            {item.p}
+                        </p>
+                    </div>
+                    <div className='img' style={{ backgroundImage: `url(${item.img})` }} />
+                </div>
+            ))}
+        </section>
+    );
+}
+
+export default Company;

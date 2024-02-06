@@ -7,19 +7,18 @@ import Project from './js/Project'
 import Article from './js/Article'
 import Contact from './js/Contact'
 import Footer from './js/Footer'
-import './App.css';
 
 function App() {
     useEffect(() => {
-        const app = document.querySelector('.App');
+        const root = document.getElementById('root');
         let scrollTimer;
 
         const scrollUp = () => {
-            app.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            root.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
             scrollTimer = setTimeout(() => scrollTimer = null, 500);
         };
         const scrollDn = () => {
-            app.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            root.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
             scrollTimer = setTimeout(() => scrollTimer = null, 500);
         };
 
@@ -53,25 +52,8 @@ function App() {
         };
     }, []);
 
-    const observer = new IntersectionObserver((e) => {
-        e.forEach((target) => {
-            if (target.isIntersecting) {
-                target.target.className = target.target.className.replace('fadeOut', 'fadeIn');
-                target.target.className = target.target.className.replace('dropOut', 'dropIn');
-            } else {
-                target.target.className = target.target.className.replace('fadeIn', 'fadeOut');
-                target.target.className = target.target.className.replace('dropIn', 'dropOut');
-            }
-        });
-    });
-
-    window.addEventListener('load', (e) => {
-        const inter = document.getElementsByClassName('animation');
-        for (var i of inter) observer.observe(i);
-    });
-
     return (
-        <div className="App">
+        <>
             <Header />
             <Main />
             <Company />
@@ -80,7 +62,7 @@ function App() {
             <Article />
             <Contact />
             <Footer />
-        </div>
+        </>
     );
 }
 

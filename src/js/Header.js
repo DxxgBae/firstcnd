@@ -7,7 +7,7 @@ function Header() {
     const [headerInvert, setHeaderInvert] = useState(false);
 
     useEffect(() => {
-        const app = document.querySelector('.App');
+        const root = document.getElementById('root');
         const invertElements = document.getElementsByClassName('invert');
 
         const handleScroll = () => {
@@ -22,8 +22,8 @@ function Header() {
         };
 
         handleScroll();
-        app.addEventListener('scroll', handleScroll);
-        return () => app.removeEventListener('scroll', handleScroll);
+        root.addEventListener('scroll', handleScroll);
+        return () => root.removeEventListener('scroll', handleScroll);
     }, []);
 
     const Menu = (
