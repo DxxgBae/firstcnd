@@ -22,7 +22,7 @@
 .App {
     width: 100dvw;
     height: 100dvh;
-    overflow: scroll;
+    overflow: hidden;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     text-align: center;

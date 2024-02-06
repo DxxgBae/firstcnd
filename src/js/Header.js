@@ -7,11 +7,11 @@ function Header() {
     const [headerInvert, setHeaderInvert] = useState(false);
 
     useEffect(() => {
-        const app = document.getElementsByClassName('App')[0];
+        const app = document.querySelector('.App');
+        const invertElements = document.getElementsByClassName('invert');
 
-        const handleScroll = (e) => {
+        const handleScroll = () => {
             var bool = false;
-            var invertElements = document.getElementsByClassName('invert');
             for (var i of invertElements) {
                 if (i.nodeName === 'HEADER') continue;
                 var top = i.getBoundingClientRect().y;
@@ -21,9 +21,8 @@ function Header() {
             setHeaderInvert(bool);
         };
 
-        app.addEventListener('scroll', handleScroll);
         handleScroll();
-
+        app.addEventListener('scroll', handleScroll);
         return () => app.removeEventListener('scroll', handleScroll);
     }, []);
 

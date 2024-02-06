@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Header from './js/Header'
 import Main from './js/Main'
 import Company from './js/Company'
@@ -9,13 +10,30 @@ import Footer from './js/Footer'
 import './App.css';
 
 function App() {
+    useEffect(() => {
+        const app = document.querySelector('.App');
+        let scrollTimer;
+
+        const scroll = (bool) => {
+            //bool: true = up, false = dn
+            if (scrollTimer) return;
+            app.scrollBy({
+                top: bool ? -window.innerHeight : window.innerHeight,
+                behavior: 'smooth'
+            });
+            scrollTimer = setTimeout(() => scrollTimer = null, 500);
+        }
+
+        window.addEventListener('wheel', (e) => scroll(e.deltaY < 0 ? true : false));
+        return () => window.removeEventListener('wheel', (e) => scroll(e.deltaY < 0 ? true : false));
+    }, []);
+
     const observer = new IntersectionObserver((e) => {
         e.forEach((target) => {
             if (target.isIntersecting) {
                 target.target.className = target.target.className.replace('fadeOut', 'fadeIn');
                 target.target.className = target.target.className.replace('dropOut', 'dropIn');
-            }
-            else {
+            } else {
                 target.target.className = target.target.className.replace('fadeIn', 'fadeOut');
                 target.target.className = target.target.className.replace('dropIn', 'dropOut');
             }
