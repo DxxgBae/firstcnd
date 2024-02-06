@@ -15,18 +15,12 @@ function App() {
         let scrollTimer;
 
         const scrollUp = () => {
-            app.scrollBy({
-                top: -window.innerHeight,
-                behavior: 'smooth'
-            });
+            app.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
             scrollTimer = setTimeout(() => scrollTimer = null, 500);
         };
 
         const scrollDn = () => {
-            app.scrollBy({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
+            app.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
             scrollTimer = setTimeout(() => scrollTimer = null, 500);
         };
 

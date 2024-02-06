@@ -1,5 +1,4 @@
 #Main {
-    scroll-snap-align: start;
     position: relative;
     height: 100dvh;
     display: flex;

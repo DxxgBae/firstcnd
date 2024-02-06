@@ -11,7 +11,7 @@
 }
 
 #Header.invert:not(:hover, :has(.tab>.active)) * {
-    color: white;
+    color: white !important;
 }
 
 #Header a {
