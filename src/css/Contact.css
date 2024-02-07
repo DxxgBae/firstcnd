@@ -1,3 +1,43 @@
 #Contact {
-    background-color: lightpink;
+    display: flex;
+    flex-direction: column;
+}
+
+#Contact .SectionTitle {
+    position: absolute;
+}
+
+#Contact #mapDiv {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(.2);
+}
+
+#Contact #mapDiv .name {
+    text-wrap: nowrap;
+}
+
+#Contact .text {
+    margin: 2rem auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+#Contact .text .item {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+#Contact .text .item i {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Contact .text .item p {
+    line-height: 2rem;
 }

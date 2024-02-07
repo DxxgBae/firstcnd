@@ -3,15 +3,14 @@ import '../css/SectionTitle.css';
 function SectionTitle({ h, p = [] }) {
     return (
         <div className='SectionTitle'>
-            <h1 className='animation fadeOut dropOut'>
+            <h1>
                 {h}
             </h1>
             {p.map((item, index) => (
-                <p key={index} className='animation fadeOut dropOut'>
+                <p key={index}>
                     {item}
                 </p>
             ))}
-            <div className='background'></div>
         </div>
     );
 }
