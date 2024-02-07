@@ -4,28 +4,31 @@
     justify-content: center;
 }
 
-#Main .background {
+#Main swiper-container {
     z-index: -1;
     position: absolute;
+}
+
+#Main swiper-container,
+#Main swiper-slide,
+#Main swiper-slide>* {
+    z-index: 0;
     width: 100%;
     height: 100%;
 }
 
-#Main .background video {
-    width: 100%;
-    height: 100%;
+#Main video {
     object-fit: cover;
     filter: brightness(.8);
 }
 
-#Main .background .img {
-    width: 100%;
-    height: 100%;
+#Main .img {
     background-size: cover;
     background-position: center;
 }
 
 #Main .text {
+    pointer-events: none;
     margin: 0 2rem;
     padding: 2rem;
     max-width: 60rem;

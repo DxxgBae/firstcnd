@@ -1,34 +1,37 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
 import '../css/Main.css';
 
 function Main() {
     return (
         <section id='Main' className='invert'>
             <div className='noise' />
-            <Swiper
-                className='background'
-                spaceBetween={0}
-                slidesPerView={1}
+            <swiper-container
+                slides-per-view={1}
                 speed={1000}
                 loop={true}
-                modules={[Autoplay]}
-                autoplay={{ delay: 5000 }}
+                autoplay-delay={5000}
             >
-                <SwiperSlide>
-                    <video playsInline muted autoPlay loop onPlay={(e) => e.target.playbackRate = .5}>
-                        <source src={require(`../img/main-0.mp4`)} type="video/mp4" />
+                <swiper-slide>
+                    <video
+                        playsInline
+                        muted
+                        autoPlay
+                        loop
+                        onPlay={(e) => e.target.playbackRate = .5}>
+                        <source src={require(`../img/main-0.mp4`)} type='video/mp4' />
                         Your browser does not support the video tag.
                     </video>
-                </SwiperSlide>
-                <SwiperSlide>
+                </swiper-slide>
+                <swiper-slide>
                     <div
                         className='img'
-                        style={{ backgroundImage: `url(${require(`../img/main-1.jpg`)})`, backgroundPositionX: 'right', backgroundPositionY: 'top', }}
+                        style={{
+                            backgroundImage: `url(${require(`../img/main-1.jpg`)})`,
+                            backgroundPositionX: 'right',
+                            backgroundPositionY: 'top'
+                        }}
                     />
-                </SwiperSlide>
-            </Swiper>
+                </swiper-slide>
+            </swiper-container>
             <div className='text'>
                 <p>
                     First is Best! Best is First!
@@ -43,8 +46,32 @@ function Main() {
                     퍼스트는 개발기획부터 분양 및 마케팅까지 ​통합솔루션을 제공할 수 있는 준비된 전문가 집단입니다.
                 </p>
             </div>
-        </section>
+        </section >
     );
 }
 
 export default Main;
+/*
+<Swiper
+className='background'
+spaceBetween={0}
+slidesPerView={1}
+speed={1000}
+loop={true}
+modules={[Autoplay]}
+autoplay={{ delay: 5000 }}
+>
+<SwiperSlide>
+    <video playsInline muted autoPlay loop onPlay={(e) => e.target.playbackRate = .5}>
+        <source src={require(`../img/main-0.mp4`)} type='video/mp4' />
+        Your browser does not support the video tag.
+    </video>
+</SwiperSlide>
+<SwiperSlide>
+    <div
+        className='img'
+        style={{ backgroundImage: `url(${require(`../img/main-1.jpg`)})`, backgroundPositionX: 'right', backgroundPositionY: 'top', }}
+    />
+</SwiperSlide>
+</Swiper>
+*/

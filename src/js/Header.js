@@ -59,6 +59,7 @@ function Header() {
         };
 
         scrollReset();
+        main.scrollTop = 0;
         window.addEventListener('resize', scrollReset);
         window.addEventListener('wheel', wheel);
         window.addEventListener('touchstart', touchstart);

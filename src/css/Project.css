@@ -1,3 +1,68 @@
-#Project {
-    background-color: lightseagreen;
+#Project swiper-container,
+#Project swiper-slide,
+#Project swiper-slide>* {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
 }
+
+#Project .slideBtn {
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    width: 4rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--ms);
+    color: white;
+}
+
+#Project .slideBtn:hover {
+    color: var(--color-main);
+}
+
+#Project .slideBtn.prev {
+    left: 0;
+}
+
+#Project .slideBtn.next {
+    right: 0;
+}
+
+#Project .item {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Project .item .img {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: var(--ms);
+}
+
+#Project .item:hover .img {
+    filter: none;
+}
+
+#Project .item .text * {
+    color: white;
+}
+
+/* Horizontal */
+@media (orientation: landscape) {
+    #Project .item .img {
+        filter: grayscale(.5) brightness(.5);
+    }
+}
+
+/* Vertical */
+@media (orientation: portrait) {}
