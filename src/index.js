@@ -4,8 +4,6 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import './index.css';
 
-window.addEventListener('touchmove', (event) => event.preventDefault(), { passive: false });
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>

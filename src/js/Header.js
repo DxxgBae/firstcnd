@@ -4,54 +4,103 @@ import '../css/Header.css'
 
 function Header() {
     const [toggleTab, setToggleTab] = useState(false);
-    const [headerInvert, setHeaderInvert] = useState(false);
+    const [scrollIndex, setScrollIndex] = useState(0);
+    const [scrollElement, setScrollElement] = useState(document.getElementById('Main'));
 
     useEffect(() => {
-        const root = document.getElementById('root');
-        const invertElements = document.getElementsByClassName('invert');
+        const main = document.getElementById('main');
+        const scrollElements = [
+            document.getElementById('Main'),
+            document.getElementById('Service'),
+            document.getElementById('History'),
+            document.getElementById('Project'),
+            document.getElementById('Article'),
+            document.getElementById('Contact'),
+            document.getElementById('Footer')
+        ];
 
-        const handleScroll = () => {
-            var bool = false;
-            for (var i of invertElements) {
-                if (i.nodeName === 'HEADER') continue;
-                var top = i.getBoundingClientRect().y;
-                var bottom = top + i.getBoundingClientRect().height;
-                if (top <= 0 && bottom > 0) bool = true;
+        const scrollReset = () => {
+            if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
+        };
+        const scrollUp = () => {
+            if (scrollIndex > 0) {
+                setScrollIndex(scrollIndex - 1);
+                setScrollElement(scrollElements[scrollIndex - 1])
             }
-            setHeaderInvert(bool);
+            if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
+        };
+        const scrollDn = () => {
+            if (scrollIndex < main.getElementsByTagName('section').length) {
+                setScrollIndex(scrollIndex + 1);
+                setScrollElement(scrollElements[scrollIndex + 1])
+            }
+            if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
         };
 
-        handleScroll();
-        root.addEventListener('scroll', handleScroll);
-        return () => root.removeEventListener('scroll', handleScroll);
-    }, []);
+        const wheel = (e) => {
+            if (e.deltaY < 0) scrollUp();
+            else if (e.deltaY > 0) scrollDn();
+        };
+
+        let startX, startY;
+        const touchstart = (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }
+        const touchend = (e) => {
+            if (!startY) return startY = null;
+            let deltaX = startX - e.changedTouches[0].clientX;
+            let deltaY = startY - e.changedTouches[0].clientY;
+            if (Math.abs(deltaX) > Math.abs(deltaY) || Math.abs(deltaY) < 30) return startY = null;
+            if (deltaY < 0) scrollUp();
+            else if (deltaY > 0) scrollDn();
+            startX = null;
+            startY = null;
+        };
+
+        scrollReset();
+        window.addEventListener('resize', scrollReset);
+        window.addEventListener('wheel', wheel);
+        window.addEventListener('touchstart', touchstart);
+        window.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+        window.addEventListener('touchend', touchend);
+        return () => {
+            window.removeEventListener('resize', scrollReset);
+            window.removeEventListener('wheel', wheel);
+            window.removeEventListener('touchstart', touchstart);
+            window.removeEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+            window.removeEventListener('touchend', touchend);
+        };
+    }, [scrollIndex]);
 
     const Menu = (
         <>
-            <li className='item'><a href='#Company'>회사소개</a></li>
-            <li className='item'><a href='#History'>회사연혁</a></li>
-            <li className='item'><a href='#Project'>프로젝트</a></li>
-            <li className='item'><a href='#Article'>보도자료</a></li>
-            <li className='item'><a href='#Contact'>오시는길</a></li>
+            <li className='item'><h5 onClick={() => setScrollIndex(1)}>회사소개</h5></li>
+            <li className='item'><h5 onClick={() => setScrollIndex(2)}>회사연혁</h5></li>
+            <li className='item'><h5 onClick={() => setScrollIndex(3)}>프로젝트</h5></li>
+            <li className='item'><h5 onClick={() => setScrollIndex(4)}>보도자료</h5></li>
+            <li className='item'><h5 onClick={() => setScrollIndex(5)}>오시는길</h5></li>
         </>
     );
 
     return (
-        <header id='Header' className={headerInvert ? 'invert' : undefined}>
+        <header
+            id='Header'
+            className={scrollElement && scrollElement.className.toString().search('invert') ? '' : 'invert'}
+            style={{ height: toggleTab ? `${(Menu.props.children.length + 1) * 4}rem` : '4rem' }}
+        >
+            <div className='noise' />
             <nav>
-                <a href='#Main' className='home'>
+                <h4 className='home' onClick={() => setScrollIndex(0)}>
                     <img src={logo} alt='logo' />
-                    <h4>FIRST C&D</h4>
-                </a>
+                    FIRST C&D
+                </h4>
                 <ul className='menu'>
                     {Menu}
                 </ul>
-                <div className='tab' onClick={() => setToggleTab(!toggleTab)}>
+                <div className={`tab${toggleTab ? ' active' : ''}`} onClick={() => setToggleTab(!toggleTab)}>
                     <i className={`fa-solid ${toggleTab ? 'fa-xmark' : 'fa-ellipsis-vertical'} fa-xl`} />
-                    <ul
-                        className={`menu${toggleTab ? ' active' : ''}`}
-                        style={{ height: `${toggleTab ? `${Menu.props.children.length * 4}rem` : 0}` }}
-                    >
+                    <ul className='menu'>
                         {Menu}
                     </ul>
                 </div>
