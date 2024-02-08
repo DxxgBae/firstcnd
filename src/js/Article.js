@@ -32,16 +32,6 @@ function Article() {
             <div className='noise' />
             <SectionTitle h='보도자료' p={['퍼스트씨엔디의 소식을 전해드립니다.']} />
             <div className='container'>
-                <i
-                    className='slideBtn prev fa-solid fa-angle-left fa-2xl'
-                    style={{ opacity: swiperRef.current && swiperRef.current.swiper.isBeginning ? 0 : 1 }}
-                    onClick={() => swiperRef.current && swiperRef.current.swiper.slidePrev()}
-                />
-                <i
-                    className='slideBtn next fa-solid fa-angle-right fa-2xl'
-                    style={{ opacity: swiperRef.current && swiperRef.current.swiper.isEnd ? 0 : 1 }}
-                    onClick={() => swiperRef.current && swiperRef.current.swiper.slideNext()}
-                />
                 <swiper-container
                     ref={swiperRef}
                     slides-per-view={isPortrait ? 1 : 3}
@@ -50,17 +40,29 @@ function Article() {
                     {!isPortrait && <swiper-slide />}
                     {dataArticle.slice().reverse().map((item, index) => (
                         <swiper-slide key={index}>
-                            <div className={`item${activeIndex === index ? ' active' : ''}`}>
+                            <div
+                                className={`item${activeIndex === index ? ' active' : ''}`}
+                                onClick={() => { swiperRef.current && swiperRef.current.swiper.slideTo(index) }}
+                            >
                                 <h4>
                                     {item.title}
                                 </h4>
+                                <p>
+                                    {item.date.yyyy}-{item.date.mm}-{item.date.dd}
+                                </p>
+                                <div className='text'>
+                                    {item.p.map((item2, index2) => (
+                                        <p key={index2}>
+                                            {item2}
+                                        </p>
+                                    ))}
+                                </div>
                             </div>
                         </swiper-slide>
                     ))}
                     {!isPortrait && <swiper-slide />}
                 </swiper-container>
             </div>
-            <div className='padding' />
         </section >
     );
 }

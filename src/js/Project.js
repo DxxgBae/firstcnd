@@ -4,9 +4,9 @@ import '../css/Project.css';
 
 function Project() {
     const swiperRef = useRef();
-    const [isPortrait, setIsPortrait] = useState(false);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+    const [isPortrait, setIsPortrait] = useState(false);
 
     useEffect(() => {
         const handleOrientationChange = (e) => setIsPortrait(e.matches);
