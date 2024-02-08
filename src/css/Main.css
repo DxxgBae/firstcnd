@@ -44,6 +44,10 @@
     line-height: 125%;
 }
 
+#Main .text .handfont {
+    font-size: 1.5rem;
+}
+
 #Main .text p {
     margin: 1rem 0;
 }

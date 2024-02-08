@@ -5,19 +5,20 @@ import '../css/Header.css'
 function Header() {
     const [toggleTab, setToggleTab] = useState(false);
     const [scrollIndex, setScrollIndex] = useState(0);
-    const [scrollElement, setScrollElement] = useState(document.getElementById('Main'));
+    const [scrollElements, setScrollElements] = useState([]);
+
+    window.addEventListener('load', () => setScrollElements([
+        document.getElementById('Main'),
+        document.getElementById('Service'),
+        document.getElementById('History'),
+        document.getElementById('Project'),
+        document.getElementById('Article'),
+        document.getElementById('Contact'),
+        document.getElementById('Footer')
+    ]));
 
     useEffect(() => {
         const main = document.getElementById('main');
-        const scrollElements = [
-            document.getElementById('Main'),
-            document.getElementById('Service'),
-            document.getElementById('History'),
-            document.getElementById('Project'),
-            document.getElementById('Article'),
-            document.getElementById('Contact'),
-            document.getElementById('Footer')
-        ];
 
         const scrollReset = () => {
             if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
@@ -25,14 +26,12 @@ function Header() {
         const scrollUp = () => {
             if (scrollIndex > 0) {
                 setScrollIndex(scrollIndex - 1);
-                setScrollElement(scrollElements[scrollIndex - 1])
             }
             if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
         };
         const scrollDn = () => {
             if (scrollIndex < main.getElementsByTagName('section').length) {
                 setScrollIndex(scrollIndex + 1);
-                setScrollElement(scrollElements[scrollIndex + 1])
             }
             if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
         };
@@ -72,7 +71,7 @@ function Header() {
             window.removeEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
             window.removeEventListener('touchend', touchend);
         };
-    }, [scrollIndex]);
+    }, [scrollIndex, scrollElements]);
 
     const Menu = (
         <>
@@ -87,7 +86,7 @@ function Header() {
     return (
         <header
             id='Header'
-            className={scrollElement && scrollElement.className.toString().search('invert') ? '' : 'invert'}
+            className={scrollElements[scrollIndex] && scrollElements[scrollIndex].className.toString().search('invert') ? '' : 'invert'}
             style={{ height: toggleTab ? `${(Menu.props.children.length + 1) * 4}rem` : '4rem' }}
         >
             <div className='noise' />

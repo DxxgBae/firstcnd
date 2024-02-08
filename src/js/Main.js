@@ -33,7 +33,7 @@ function Main() {
                 </swiper-slide>
             </swiper-container>
             <div className='text'>
-                <p>
+                <p className='handfont'>
                     First is Best! Best is First!
                 </p>
                 <h2>

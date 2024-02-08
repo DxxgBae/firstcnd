@@ -1,5 +1,12 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+@font-face {
+    font-family: 'JSArirang-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSArirang-RegularA1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --color-black: rgb(50, 50, 50);
     --color-gray: gray;
@@ -61,6 +68,10 @@ h5 {
 h6 {
     font-size: .75rem;
     font-weight: 900;
+}
+
+.handfont {
+    font-family: 'JSArirang-Regular', sans-serif;
 }
 
 .noise {
