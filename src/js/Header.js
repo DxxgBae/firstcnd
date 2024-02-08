@@ -58,8 +58,8 @@ function Header() {
             startY = null;
         };
 
-        scrollReset();
         main.scrollTop = 0;
+        scrollReset();
         window.addEventListener('resize', scrollReset);
         window.addEventListener('wheel', wheel);
         window.addEventListener('touchstart', touchstart);
@@ -99,7 +99,7 @@ function Header() {
                 <ul className='menu'>
                     {Menu}
                 </ul>
-                <div className={`tab${toggleTab ? ' active' : ''}`} onClick={() => setToggleTab(!toggleTab)}>
+                <div className={`tab ${toggleTab ? 'active' : ''}`} onClick={() => setToggleTab(!toggleTab)}>
                     <i className={`fa-solid ${toggleTab ? 'fa-xmark' : 'fa-ellipsis-vertical'} fa-xl`} />
                     <ul className='menu'>
                         {Menu}
