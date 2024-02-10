@@ -1,1 +1,33 @@
-#History {}
+#History {
+    display: flex;
+    flex-direction: column;
+}
+
+#History .swipe {
+    border-top: 2px solid var(--color-black);
+    overflow: hidden;
+}
+
+#History .item {
+    position: relative;
+    padding: 0 2rem;
+    flex-shrink: 0;
+    text-align: left;
+}
+
+#History .item>i {
+    position: absolute;
+    top: -1rem;
+    width: 0;
+    height: 1rem;
+    transform: rotate(90deg);
+}
+
+#History .month {
+    margin: 1rem 0;
+    display: flex;
+}
+
+#History .month>div {
+    margin-left: 1rem;
+}
