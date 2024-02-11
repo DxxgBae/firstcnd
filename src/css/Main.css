@@ -4,15 +4,14 @@
     justify-content: center;
 }
 
-#Main swiper-container {
+#Main .swiper {
     z-index: -1;
     position: absolute;
 }
 
-#Main swiper-container,
-#Main swiper-slide,
-#Main swiper-slide>* {
-    z-index: 0;
+#Main .swiper,
+#Main .swiper-wrapper,
+#Main .swiper-slide>* {
     width: 100%;
     height: 100%;
 }

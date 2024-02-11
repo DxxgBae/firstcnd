@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
 import dataHistory from '../data/history.json';
 import SectionTitle from './SectionTitle'
-import Swipe from './Swipe';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules'
 import '../css/History.css';
 
 function History() {
     const [isPortrait, setIsPortrait] = useState(false);
 
     useEffect(() => {
-        const handleOrientationChange = (e) => {
-            setIsPortrait(e.matches);
-        };
+        const handleOrientationChange = (e) => setIsPortrait(e.matches);
 
         const mediaQuery = window.matchMedia('(orientation: portrait)');
         handleOrientationChange(mediaQuery);
@@ -22,15 +21,20 @@ function History() {
         <section id='History'>
             <div className='noise' />
             <SectionTitle h='회사연혁' p={['퍼스트씨엔디가 걸어온 길을 소개드립니다.']} />
-            <Swipe
-                perView={isPortrait ? 1 : 3}
-                loop={true}
+            <Swiper
+                modules={[Autoplay]}
+                slidesPerView={isPortrait ? 1 : 3}
+                centeredSlides={true}
+                speed={2000}
+                autoplay={{
+                    delay: 1000,
+                    pauseOnMouseEnter: true
+                }}
             >
-                {!isPortrait && <div className='item' />}
                 {dataHistory.map((item, index) => (
-                    <div key={index} className='item'>
+                    <SwiperSlide key={index}>
                         <i className='fa-solid fa-diamond' />
-                        <h2 className='handfont'>
+                        <h2>
                             {item.yyyy}
                         </h2>
                         <div className='year'>
@@ -50,9 +54,9 @@ function History() {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </SwiperSlide>
                 ))}
-            </Swipe>
+            </Swiper>
         </section >
     );
 }

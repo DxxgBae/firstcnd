@@ -1,17 +1,15 @@
-#Project .container,
-#Project swiper-container,
-#Project swiper-slide,
-#Project swiper-slide>* {
-    z-index: 0;
+#Project .swiper,
+#Project .swiper-wrapper,
+#Project .swiper-slide>* {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-#Project .slideBtn {
-    z-index: 1;
-    cursor: pointer;
-    position: absolute;
+#Project .swiper-button-prev,
+#Project .swiper-button-next {
+    margin: 0;
+    top: 0;
     width: 4rem;
     height: 100%;
     display: flex;
@@ -19,34 +17,53 @@
     justify-content: center;
     transition: var(--ms);
     color: white;
+
+    &:hover {
+        color: var(--color-main);
+    }
 }
 
-#Project .slideBtn:hover {
-    color: var(--color-main);
-}
-
-#Project .slideBtn.disable {
+#Project .swiper:has(.clicked) .swiper-button-prev,
+#Project .swiper:has(.clicked) .swiper-button-next {
+    pointer-events: none;
     opacity: 0;
 }
 
-#Project .slideBtn.prev {
+#Project .swiper-button-prev {
     left: 0;
+
+    &::after {
+        content: '\f053';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 2rem;
+    }
 }
 
-#Project .slideBtn.next {
+#Project .swiper-button-next {
     right: 0;
+
+    &::after {
+        content: '\f054';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 2rem;
+    }
+}
+
+#Project .swiper-button-disabled {
+    opacity: 0;
 }
 
 #Project .item {
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-top: 4rem;
 }
 
 #Project .item .img {
     z-index: -1;
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -54,8 +71,9 @@
     transition: var(--ms);
 }
 
-#Project .item:hover .img {
-    filter: none;
+#Project .item .text {
+    padding: 2rem 0;
+    transition: var(--ms);
 }
 
 #Project .item .text * {
@@ -64,10 +82,40 @@
 
 /* Horizontal */
 @media (orientation: landscape) {
-    #Project .item .img {
+    #Project .swiper-slide {
+        transition: var(--ms);
+        left: 0;
+    }
+
+    #Project .swiper-slide.clicked {
+        width: 100% !important;
+    }
+
+    #Project .swiper-slide.clicked:not(.swiper-slide-active) {
+        left: calc(-100% * 2 / 3);
+
+        &.swiper-slide-next,
+        &.swiper-slide-next+* {
+            left: calc(-100% / 3);
+        }
+    }
+
+    #Project .swiper-slide:not(.clicked) .item:not(:hover) .img {
         filter: grayscale(.5) brightness(.5);
+    }
+
+    #Project .swiper-slide.clicked .item .text:not(:hover) {
+        backdrop-filter: blur(.2rem) invert(.2);
     }
 }
 
 /* Vertical */
-@media (orientation: portrait) {}
+@media (orientation: portrait) {
+    #Project .item .text {
+        backdrop-filter: blur(.2rem) invert(.2);
+    }
+
+    #Project .item .text:hover {
+        backdrop-filter: none;
+    }
+}

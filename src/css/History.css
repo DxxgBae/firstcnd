@@ -3,19 +3,26 @@
     flex-direction: column;
 }
 
-#History .swipe {
+#History .swiper {
+    width: 100%;
     border-top: 2px solid var(--color-black);
     overflow: hidden;
 }
 
-#History .item {
+#History .swiper-wrapper {
+    width: 100%;
+}
+
+#History .swiper-slide {
     position: relative;
+    width: 100%;
+    height: 100%;
     padding: 0 2rem;
     flex-shrink: 0;
     text-align: left;
 }
 
-#History .item>i {
+#History .swiper-slide>i {
     position: absolute;
     top: -1rem;
     width: 0;
