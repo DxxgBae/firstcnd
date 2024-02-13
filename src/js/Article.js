@@ -45,6 +45,16 @@ function Article() {
                                         {item2}
                                     </p>
                                 ))}
+                                {item.url &&
+                                    <a
+                                        href={item.url}
+                                        target='_blank'
+                                        rel='noreferrer'
+                                        style={{ fontWeight: 600 }}
+                                    >
+                                        기사 바로가기 <i className='fa-solid fa-arrow-up-right-from-square' />
+                                    </a>
+                                }
                             </div>
                         </div>
                     </SwiperSlide>

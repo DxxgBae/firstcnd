@@ -46,7 +46,7 @@ function Main() {
                     베스트를 다해 최고임을 증명합니다.
                 </h2>
                 <p>
-                    퍼스트는 개발기획부터 분양 및 마케팅까지 ​통합솔루션을 제공할 수 있는 준비된 전문가 집단입니다.
+                    퍼스트씨엔디는 부동산 개발기획부터 분양 및 마케팅까지 ​통합솔루션을 제공할 수 있는 준비된 전문가 집단입니다.
                 </p>
             </div>
         </section >
@@ -54,33 +54,3 @@ function Main() {
 }
 
 export default Main;
-/*
-            <swiper-container
-                slides-per-view={1}
-                speed={1000}
-                loop={true}
-                autoplay-delay={5000}
-            >
-                <swiper-slide>
-                    <video
-                        playsInline
-                        muted
-                        autoPlay
-                        loop
-                        onPlay={(e) => e.target.playbackRate = .5}>
-                        <source src={require(`../img/main-0.mp4`)} type='video/mp4' />
-                        Your browser does not support the video tag.
-                    </video>
-                </swiper-slide>
-                <swiper-slide>
-                    <div
-                        className='img'
-                        style={{
-                            backgroundImage: `url(${require(`../img/main-1.jpg`)})`,
-                            backgroundPositionX: 'right',
-                            backgroundPositionY: 'top'
-                        }}
-                    />
-                </swiper-slide>
-            </swiper-container>
-*/

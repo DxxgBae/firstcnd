@@ -64,24 +64,3 @@ function Project() {
 }
 
 export default Project;
-/*
-
-                <swiper-container
-                    ref={swiperRef}
-                    slides-per-view={isPortrait ? 1 : 3}
-                    speed={1000}
-                >
-                    {dataProject.slice().reverse().map((item, index) => (
-                        <swiper-slide key={index}>
-                            <div className='item'>
-                                <div className='img' style={{ backgroundImage: `url(${require(`../img/project-${item.index}-0.jpg`)})` }} />
-                                <div className='text'>
-                                    <h5>
-                                        {item.name}
-                                    </h5>
-                                </div>
-                            </div>
-                        </swiper-slide>
-                    ))}
-                </swiper-container>
-*/

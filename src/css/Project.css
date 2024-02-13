@@ -96,7 +96,8 @@
         left: calc(-100% * 2 / 3);
 
         &.swiper-slide-next,
-        &.swiper-slide-next+* {
+        &.swiper-slide-next+*,
+        &.swiper-slide-next+*+* {
             left: calc(-100% / 3);
         }
     }

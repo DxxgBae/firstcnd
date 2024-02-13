@@ -26,10 +26,7 @@ function History() {
                 slidesPerView={isPortrait ? 1 : 3}
                 centeredSlides={true}
                 speed={2000}
-                autoplay={{
-                    delay: 1000,
-                    pauseOnMouseEnter: true
-                }}
+                autoplay={{ delay: 1000 }}
             >
                 {dataHistory.map((item, index) => (
                     <SwiperSlide key={index}>
