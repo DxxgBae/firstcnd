@@ -52,7 +52,7 @@ function Header() {
             if (!startY) return startY = null;
             let deltaX = startX - e.changedTouches[0].clientX;
             let deltaY = startY - e.changedTouches[0].clientY;
-            if (Math.abs(deltaX) > Math.abs(deltaY) || Math.abs(deltaY) < 30) return startY = null;
+            if (Math.abs(deltaX) > Math.abs(deltaY) || Math.abs(deltaY) < 50) return startY = null;
             if (deltaY < 0) scrollUp();
             else if (deltaY > 0) scrollDn();
             startX = null;
