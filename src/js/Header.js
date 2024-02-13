@@ -80,7 +80,7 @@ function Header() {
             <li className='item'><h5 onClick={() => setScrollIndex(1)}>회사소개</h5></li>
             <li className='item'><h5 onClick={() => setScrollIndex(2)}>회사연혁</h5></li>
             <li className='item'><h5 onClick={() => setScrollIndex(3)}>프로젝트</h5></li>
-            <li className='item'><h5 onClick={() => setScrollIndex(4)}>보도자료</h5></li>
+            <li className='item'><h5 onClick={() => setScrollIndex(4)}>회사소식</h5></li>
             <li className='item'><h5 onClick={() => setScrollIndex(5)}>오시는길</h5></li>
         </>
     );

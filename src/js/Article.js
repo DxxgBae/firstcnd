@@ -20,7 +20,7 @@ function Article() {
     return (
         <section id='Article'>
             <div className='noise' />
-            <SectionTitle h='보도자료' p={['퍼스트씨엔디의 소식을 전해드립니다.']} />
+            <SectionTitle h='회사소식' p={['퍼스트씨엔디의 소식을 전해드립니다.']} />
             <Swiper
                 modules={[Navigation]}
                 slidesPerView={isPortrait ? 1 : 4}

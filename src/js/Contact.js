@@ -12,13 +12,13 @@ function Contact() {
         const mapOption = {
             center: new naver.maps.LatLng(37.51740, 127.02262),
             zoom: 15,
-            //draggable: false,
-            //pinchZoom: false,
-            //scrollWheel: false,
-            //keyboardShortcuts: false,
-            //disableDoubleTapZoom: true,
-            //disableDoubleClickZoom: true,
-            //disableTwoFingerTapZoom: true
+            draggable: false,
+            pinchZoom: false,
+            scrollWheel: false,
+            keyboardShortcuts: false,
+            disableDoubleTapZoom: true,
+            disableDoubleClickZoom: true,
+            disableTwoFingerTapZoom: true
         };
 
         const map = new naver.maps.Map(mapElement.current, mapOption);
