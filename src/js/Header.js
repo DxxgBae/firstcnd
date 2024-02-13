@@ -7,15 +7,17 @@ function Header() {
     const [scrollIndex, setScrollIndex] = useState(0);
     const [scrollElements, setScrollElements] = useState([]);
 
-    window.addEventListener('load', () => setScrollElements([
-        document.getElementById('Main'),
-        document.getElementById('Service'),
-        document.getElementById('History'),
-        document.getElementById('Project'),
-        document.getElementById('Article'),
-        document.getElementById('Contact'),
-        document.getElementById('Footer')
-    ]));
+    useEffect(() => {
+        setScrollElements([
+            document.getElementById('Main'),
+            document.getElementById('Service'),
+            document.getElementById('History'),
+            document.getElementById('Project'),
+            document.getElementById('Article'),
+            document.getElementById('Contact'),
+            document.getElementById('Footer')
+        ]);
+    }, []);
 
     useEffect(() => {
         const main = document.getElementById('main');
