@@ -27,6 +27,7 @@ function History() {
             <Swiper
                 ref={swiperRef}
                 modules={[Autoplay]}
+                slidesPerView={window.matchMedia('(orientation: portrait)').matches ? 1 : 3}
                 centeredSlides={true}
                 speed={2000}
                 autoplay={{ delay: 1000 }}

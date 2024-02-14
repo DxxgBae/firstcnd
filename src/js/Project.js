@@ -25,6 +25,7 @@ function Project() {
             <Swiper
                 ref={swiperRef}
                 modules={[Navigation]}
+                slidesPerView={window.matchMedia('(orientation: portrait)').matches ? 1 : 3}
                 speed={1000}
                 navigation={true}
             >
