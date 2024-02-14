@@ -2,6 +2,7 @@
     z-index: 99;
     position: fixed;
     width: 100%;
+    height: 4rem;
     overflow: hidden;
     transition: var(--ms), transform calc(var(--ms) * 2);
 }
@@ -9,6 +10,10 @@
 #Header:hover,
 #Header:has(.tab.active) {
     background-color: white;
+}
+
+#Header:has(.tab.active) {
+    height: 20rem;
 }
 
 #Header.invert * {
@@ -83,6 +88,7 @@
 }
 
 #Header .tab {
+    cursor: pointer;
     position: absolute;
     top: 0;
     right: 0;
@@ -93,7 +99,7 @@
 }
 
 #Header .tab i {
-    cursor: pointer;
+    pointer-events: none;
     width: 4rem;
     height: 4rem;
     display: flex;
@@ -101,14 +107,27 @@
     justify-content: center;
     transition: var(--ms);
     transform: scale(1);
+
 }
 
-#Header .tab i:hover {
+#Header .tab i::after {
+    content: '\f142';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+#Header .tab:hover i {
     color: var(--color-main) !important;
     transform: scale(1.2);
 }
 
-#Header .tab.active i:hover {
+#Header .tab.active i::after {
+    content: '\f00d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+#Header .tab.active:hover i {
     transform: scale(1.2) rotate(180deg);
 }
 

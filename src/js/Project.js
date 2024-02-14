@@ -1,40 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import dataProject from '../data/project.json';
 import '../css/Project.css';
 
 function Project() {
-    const [clickIndex, setClickIndex] = useState(null);
-    const [isPortrait, setIsPortrait] = useState(false);
+    const swiperRef = useRef();
 
     useEffect(() => {
         const handleOrientationChange = (e) => {
-            setIsPortrait(e.matches);
-            if (e.matches) setClickIndex(null);
+            const swiper = swiperRef.current.swiper;
+            swiper.params.slidesPerView = e.matches ? 1 : 3;
         };
 
         const mediaQuery = window.matchMedia('(orientation: portrait)');
         handleOrientationChange(mediaQuery);
         mediaQuery.addEventListener('change', handleOrientationChange);
         return () => mediaQuery.removeEventListener('change', handleOrientationChange);
-    }, [setClickIndex]);
+    }, []);
 
     return (
         <section id='Project' className='invert'>
             <div className='noise' />
             <Swiper
+                ref={swiperRef}
                 modules={[Navigation]}
-                slidesPerView={isPortrait ? 1 : 3}
                 speed={1000}
                 navigation={true}
-                onSlideChange={() => setClickIndex(null)}
             >
                 {dataProject.slice().reverse().map((item, index) => (
                     <SwiperSlide
                         key={index}
-                        className={index === clickIndex ? 'clicked' : ''}
-                        onClick={() => index === clickIndex ? setClickIndex(null) : !isPortrait && setClickIndex(index)}
+                        onClick={(e) => {
+                            if (e.target.className.search('clicked') < 0) e.target.className += ' clicked';
+                            else e.target.className = e.target.className.replace(' clicked', '');
+                        }}
                     >
                         <div className='item'>
                             <div className='img' style={{ backgroundImage: `url(${require(`../img/project-${item.index}-0.jpg`)})` }} />
@@ -42,18 +42,16 @@ function Project() {
                                 <h4>
                                     {item.name}
                                 </h4>
-                                {(isPortrait || (!isPortrait && index === clickIndex)) && <>
-                                    <p>
-                                        {item.address}
-                                    </p>
-                                    <p>
-                                        연면적 {item.area}m² / 지하{item.floor.dn}층 지상{item.floor.up}층
-                                    </p>
-                                    <p>
-                                        {item.type} / {item.owner}
-                                    </p>
-                                </>}
-                                {index === clickIndex && <p>Click to Close</p>}
+                                <p>
+                                    {item.address}
+                                </p>
+                                <p>
+                                    연면적 {item.area}m² / 지하{item.floor.dn}층 지상{item.floor.up}층
+                                </p>
+                                <p>
+                                    {item.type} / {item.owner}
+                                </p>
+                                <p className='clickedShow'>Click to Close</p>
                             </div>
                         </div>
                     </SwiperSlide>

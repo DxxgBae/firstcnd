@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import dataHistory from '../data/history.json';
 import SectionTitle from './SectionTitle'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,24 +6,27 @@ import { Autoplay } from 'swiper/modules'
 import '../css/History.css';
 
 function History() {
-    const [isPortrait, setIsPortrait] = useState(false);
+    const swiperRef = useRef();
 
     useEffect(() => {
-        const handleOrientationChange = (e) => setIsPortrait(e.matches);
+        const handleOrientationChange = (e) => {
+            const swiper = swiperRef.current.swiper;
+            swiper.params.slidesPerView = e.matches ? 1 : 3;
+        }
 
         const mediaQuery = window.matchMedia('(orientation: portrait)');
         handleOrientationChange(mediaQuery);
         mediaQuery.addEventListener('change', handleOrientationChange);
         return () => mediaQuery.removeEventListener('change', handleOrientationChange);
-    }, [isPortrait]);
+    }, []);
 
     return (
         <section id='History'>
             <div className='noise' />
             <SectionTitle h='회사연혁' p={['퍼스트씨엔디가 걸어온 길을 소개드립니다.']} />
             <Swiper
+                ref={swiperRef}
                 modules={[Autoplay]}
-                slidesPerView={isPortrait ? 1 : 3}
                 centeredSlides={true}
                 speed={2000}
                 autoplay={{ delay: 1000 }}

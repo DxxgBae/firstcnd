@@ -3,12 +3,12 @@ import logo from '../img/logo.svg';
 import '../css/Header.css'
 
 function Header() {
-    const [toggleTab, setToggleTab] = useState(false);
     const [scrollIndex, setScrollIndex] = useState(0);
-    const [scrollElements, setScrollElements] = useState([]);
 
     useEffect(() => {
-        setScrollElements([
+        const header = document.getElementById('Header');
+        const main = document.getElementById('main');
+        const scrollElements = [
             document.getElementById('Main'),
             document.getElementById('Service'),
             document.getElementById('History'),
@@ -16,26 +16,25 @@ function Header() {
             document.getElementById('Article'),
             document.getElementById('Contact'),
             document.getElementById('Footer')
-        ]);
-    }, []);
-
-    useEffect(() => {
-        const main = document.getElementById('main');
+        ];
 
         const scrollReset = () => {
-            if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
+            if (scrollElements[scrollIndex]) {
+                main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
+                header.className = scrollElements[scrollIndex].className.search('invert') < 0 ? '' : 'invert';
+            }
         };
         const scrollUp = () => {
             if (scrollIndex > 0) {
                 setScrollIndex(scrollIndex - 1);
             }
-            if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
+            scrollReset();
         };
         const scrollDn = () => {
             if (scrollIndex < main.getElementsByTagName('section').length) {
                 setScrollIndex(scrollIndex + 1);
             }
-            if (scrollElements[scrollIndex]) main.style.transform = `translateY(${-scrollElements[scrollIndex].offsetTop + (scrollIndex === scrollElements.length - 1 ? window.innerHeight - scrollElements[scrollIndex].clientHeight : 0)}px)`;
+            scrollReset();
         };
 
         const wheel = (e) => {
@@ -73,7 +72,7 @@ function Header() {
             window.removeEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
             window.removeEventListener('touchend', touchend);
         };
-    }, [scrollIndex, scrollElements]);
+    }, [scrollIndex]);
 
     const Menu = (
         <>
@@ -86,11 +85,7 @@ function Header() {
     );
 
     return (
-        <header
-            id='Header'
-            className={scrollElements[scrollIndex] && scrollElements[scrollIndex].className.toString().search('invert') ? '' : 'invert'}
-            style={{ height: toggleTab ? `${(Menu.props.children.length + 1) * 4}rem` : '4rem' }}
-        >
+        <header id='Header'>
             <div className='noise' />
             <nav>
                 <h4 className='home' onClick={() => setScrollIndex(0)}>
@@ -100,14 +95,17 @@ function Header() {
                 <ul className='menu'>
                     {Menu}
                 </ul>
-                <div className={`tab ${toggleTab ? 'active' : ''}`} onClick={() => setToggleTab(!toggleTab)}>
-                    <i className={`fa-solid ${toggleTab ? 'fa-xmark' : 'fa-ellipsis-vertical'} fa-xl`} />
+                <div
+                    className='tab'
+                    onClick={(e) => e.target.className = e.target.className === 'tab' ? 'tab active' : 'tab'}
+                >
+                    <i className='fa-solid fa-xl' />
                     <ul className='menu'>
                         {Menu}
                     </ul>
                 </div>
             </nav>
-        </header>
+        </header >
     );
 }
 

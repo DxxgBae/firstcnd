@@ -1,6 +1,5 @@
 #Project .swiper,
-#Project .swiper-wrapper,
-#Project .swiper-slide>* {
+#Project .swiper-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -21,12 +20,6 @@
     &:hover {
         color: var(--color-main);
     }
-}
-
-#Project .swiper:has(.clicked) .swiper-button-prev,
-#Project .swiper:has(.clicked) .swiper-button-next {
-    pointer-events: none;
-    opacity: 0;
 }
 
 #Project .swiper-button-prev {
@@ -55,12 +48,16 @@
     opacity: 0;
 }
 
-#Project .item {
+#Project .swiper-slide {
     cursor: pointer;
+}
+
+#Project .item {
+    pointer-events: none;
     padding-top: 4rem;
 }
 
-#Project .item .img {
+#Project .img {
     z-index: -1;
     position: absolute;
     top: 0;
@@ -71,17 +68,24 @@
     transition: var(--ms);
 }
 
-#Project .item .text {
+#Project .text {
     padding: 2rem 0;
     transition: var(--ms);
 }
 
-#Project .item .text * {
+#Project .text * {
     color: white;
 }
 
 /* Horizontal */
 @media (orientation: landscape) {
+
+    #Project .swiper:has(.clicked) .swiper-button-prev,
+    #Project .swiper:has(.clicked) .swiper-button-next {
+        pointer-events: none;
+        opacity: 0;
+    }
+
     #Project .swiper-slide {
         transition: var(--ms);
         left: 0;
@@ -93,21 +97,36 @@
     }
 
     #Project .swiper-slide.clicked:not(.swiper-slide-active) {
-        left: calc(-100% * 2 / 3);
 
         &.swiper-slide-next,
         &.swiper-slide-next+*,
-        &.swiper-slide-next+*+* {
+        &.swiper-slide-next+*+*,
+        &.swiper-slide-next+*+*+* {
             left: calc(-100% / 3);
+        }
+
+        &:not(.swiper-slide-next),
+        &:not(.swiper-slide-next)+*,
+        &:not(.swiper-slide-next)+*+*,
+        &:not(.swiper-slide-next)+*+*+* {
+            left: calc(-100% * 2 / 3);
         }
     }
 
-    #Project .swiper-slide:not(.clicked) .item:not(:hover) .img {
+    #Project .swiper-slide:not(.clicked, :hover) .img {
         filter: grayscale(.5) brightness(.5);
     }
 
-    #Project .swiper-slide.clicked .item .text:not(:hover) {
+    #Project .swiper-slide.clicked .text:not(:hover) {
         backdrop-filter: blur(.2rem) invert(.2);
+    }
+
+    #Project .swiper-slide p {
+        transition: var(--ms);
+    }
+
+    #Project .swiper-slide:not(.clicked) p {
+        opacity: 0;
     }
 }
 
@@ -119,5 +138,9 @@
 
     #Project .item .text:hover {
         backdrop-filter: none;
+    }
+
+    #Project .item .clickedShow {
+        display: none;
     }
 }
