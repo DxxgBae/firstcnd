@@ -47,7 +47,7 @@ function Project() {
                                     {item.address}
                                 </p>
                                 <p>
-                                    연면적 {item.area}m² / 지하{item.floor.dn}층 지상{item.floor.up}층
+                                    연면적 {item.area.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}m² / 지하{item.floor.dn}층 지상{item.floor.up}층
                                 </p>
                                 <p>
                                     {item.type} / {item.owner}
