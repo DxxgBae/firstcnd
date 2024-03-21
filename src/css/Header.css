@@ -13,7 +13,7 @@
 }
 
 #Header:has(.tab.active) {
-    height: 20rem;
+    height: 24rem;
 }
 
 #Header.invert * {

@@ -97,7 +97,7 @@ function Header() {
                 </ul>
                 <div
                     className='tab'
-                    onClick={(e) => e.target.className = e.target.className === 'tab' ? 'tab active' : 'tab'}
+                    onClick={(e) => { if (e.target.className) e.target.className = e.target.className === 'tab' ? 'tab active' : 'tab'; }}
                 >
                     <i className='fa-solid fa-xl' />
                     <ul className='menu'>
